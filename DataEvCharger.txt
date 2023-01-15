@@ -1,0 +1,100 @@
+Following functions are used below to interpret some values correctly:
+
+function read16BitSigned(n) {
+  if (n < 32768) {
+    return n;
+  } else {
+    return n - 65536;
+  }
+}
+
+function read32BitUnsigned(a, b) {
+  return a + 65536 * a;
+}
+
+function read32BitSigned(a, b) {
+  if (a < 32768) {
+    return a + 65536 * a;
+  } else {
+    return a + 65536 * a - 4294967296;
+  }
+}
+
+Data parsing: {
+  DeviceState: Data[0],
+  DeviceMode: Data[1],
+  EQ_Single: Data[12] / 10, # kWh
+  EQ_Total: read32BitUnsigned(Data[14], Data[15]) / 10, # kWh
+  Total_ChargePower: Data[11],
+  VoltageA: Data[2] / 100,
+  VoltageB: Data[3] / 100,
+  VoltageC: Data[4] / 100,
+  CurrentA: Data[5] / 100,
+  CurrentB: Data[6] / 100,
+  CurrentC: Data[7] / 100,
+  ChargePowerA: Data[8],
+  ChargePowerB: Data[9],
+  ChargePowerC: Data[10],
+  Extern_CurrentA: read16BitSigned(Data[16]) / 100,
+  Extern_CurrentB: read16BitSigned(Data[17]) / 100,
+  Extern_CurrentC: read16BitSigned(Data[18]) / 100,
+  Extern_PowerA: read16BitSigned(Data[19]),
+  Extern_PowerB: read16BitSigned(Data[20]),
+  Extern_PowerC: read16BitSigned(Data[21]),
+  Extern_TotalPower: read16BitSigned(Data[22]),
+  Temp1_Plug: Data[23], # °C
+  Temp2_PCB: Data[24], # °C
+  CP_State: Data[26],
+  ChargingDuration: read32BitUnsigned(Data[80], Data[81]), # seconds
+  OCPP_offline_mode: Data[85],
+  Type_power: Data[87],
+  Type_phase: Data[88],
+  Type_charger: Data[89],
+}
+
+Other fields found in the response:
+OCPPServer: string
+OCPPChargerId: string
+
+DeviceState:
+0,1: Preparing
+2: Charging
+3: Finishing
+4: Faulted
+5: Unavailable
+6: Reserved
+7: SuspendedEV
+8: SuspendedEVSE
+else: -
+
+DeviceMode:
+0: STOP
+1: FAST
+2: ECO
+3: GREEN
+else: -
+
+CP_State:
+Advanced settings unavailable when set to 1 or 2
+
+Type_power apparently defines power levels for ECO charging:
+1: [
+  {text: "Level 1 6A", code: 6},
+  {text: "Level 2 10A", code: 10}
+]
+else: [
+  {text: "Level 1 6A", code: 6},
+  {text: "Level 2 10A", code: 10},
+  {text: "Level 3 16A", code: 16},
+  {text: "Level 4 20A", code: 20},
+  {text: "Level 5 25A", code: 25}
+]
+
+Type_phase:
+0: Three-phase
+
+Type_charger and OCPP_offline_mode are related somehow:
+if Type_charger == 0 || (Type_charger == 1 && OCPP_offline_mode == 0)
+  render settings
+else
+  nothing

@@ -1,0 +1,132 @@
+Data for the inverter of the first type
+
+Data:
+0 - pv1Current (A)
+1 - pv2Current (A)
+2 - pv1Voltage (V)
+3 - pv2Voltage (V)
+4 - gridACurrent (A)
+5 - gridAVoltage (V)
+6 - gridPower (W)
+  loadPower = gridPower - feedIn
+7
+8 - yieldToday (kWh)
+9 - yieldTotal (kWh)
+10 - feedIn (W)
+11 - pv1Power (W)
+12 - pv2Power (W)
+13 - batteryVoltage (V)
+14
+15 - batteryPower (W)
+16 - batteryTemperature (°C)
+17
+18
+19
+20
+21 - batteryCapacity (%)
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41 - feedInEnergy (kWh)
+42 - consumeEnergy (kWh)
+  if feedIn != 0 || feedInEnergy != 0 || consumeEnergy != 0
+    isMeter = false
+  else
+    isMeter = true
+43 - gridAPower (W)
+44 - gridBPower (W)
+45 - gridCPower (W)
+46 - gridBCurrent (A)
+47 - gridCCurrent (A)
+48 - gridBVoltage (V)
+49 - gridCVoltage (V)
+50 - gridAFrequency (Hz)
+51 - gridBFrequency (Hz)
+52 - gridCFrequency (Hz)
+53 - epsAVoltage (V)
+54 - epsACurrent (A)
+55 - epsAPower (W)
+  # 7 means EPS mode in all inverter models
+  isEps = workMode == 7
+  if isEps
+    # Not 100% sure what it overrides grid power with in EPS mode
+    gridPower = epsPower
+56
+57
+58
+59
+60
+61
+?62 - Some kind of status that is shown in UI related to "relay1"
+  switch ?62
+    case 0:
+      status = 'ok';
+      isMatch = true;
+      break;
+    case 9:
+    case 10:
+      status = 'warning';
+      isMatch = false;
+      break;
+    default:
+      status = 'error';
+      isMatch = false;
+63
+64
+65
+66
+?67 - Some kind of status that is shown in UI related to "relay2"
+  switch ?67
+    case 0:
+      status = 'ok';
+      isMatch = true;
+      break;
+    case 9:
+    case 10:
+      status = 'warning';
+      isMatch = false;
+      break;
+    default:
+      status = 'error';
+      isMatch = false;
+68 - workMode (integer)
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87 - epsBVoltage (V)
+88 - epsBCurrent (A)
+89 - epsBPower (W)
+90 - epsCVoltage (V)
+91 - epsCCurrent (A)
+92 - epsCPower (W)

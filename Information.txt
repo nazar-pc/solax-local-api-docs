@@ -1,0 +1,157 @@
+Information depends on inverterType, which is contained in `Information[1]`:
+0
+1 - inverterType
+  apparently the same as in `type` field of the response body, at least in some cases
+  if inverterType >= 8
+    getPub2(Data) # See `Data2.txt` for contents details
+  else
+    getPub1(Data) # See `Data1.txt` for contents details
+2
+  if inverterType >= 8
+    inverterSerialNumber
+  else
+    ?
+3
+  if inverterType < 8
+    inverterSerialNumber
+  else
+    ?
+4
+  if inverterType >= 8
+    dspVersion
+  else
+    ?
+5
+  if inverterType < 8
+    dspVersion
+  else
+    ?
+6
+  if inverterType >= 8
+    armVersion
+  else
+    ?
+7
+  if inverterType < 8
+    armVersion
+  else
+    ?
+8
+9 - transportType
+  if inverterType >= 8
+    transportType = 1
+  else
+   transportType = transportType
+10 - dongleModType
+11 - dongleWorkMode
+
+workModes/RunMode per inverterType:
+3, 13..15, 17: {
+  0: "Waiting",
+  1: "Checking",
+  2: "Normal",
+  3: "Fault",
+  4: "Permanent Fault",
+  5: "Upgrading",
+  6: "EPS Checking/Waiting",
+  7: "EPS",
+  8: "Self Testing",
+  9: "Idle",
+  10: "Standby"
+}
+4, 6..8, 16: {
+  0: "Waiting",
+  1: "Checking",
+  2: "Normal",
+  3: "Fault",
+  4: "Permanent Fault",
+  5: "Upgrading"
+}
+5: {
+  0: "Waiting",
+  1: "Checking",
+  2: "Normal",
+  3: "Fault",
+  4: "Permanent Fault",
+  5: "Upgrading",
+  6: "EPS Checking/Waiting",
+  7: "EPS",
+  8: "Self Testing",
+  9: "Idle",
+  10: "PvWakeUpBat",
+  11: "Standby",
+}
+9: {
+  0: "Waiting",
+  1: "Checking",
+  2: "Normal",
+  3: "Fault",
+  4: "Permanent Fault",
+  5: "Upgrading",
+  8: "Self Testing",
+  9: "Idle",
+  10: "Standby"
+}
+10..12: {
+  0: "Waiting",
+  1: "Checking",
+  2: "Normal",
+  3: "Fault",
+  4: "Permanent Fault",
+  5: "Upgrading",
+  6: "EPS Checking/Waiting",
+  7: "EPS",
+  8: "Self Testing",
+  9: "Idle",
+  10: "Gen Check",
+  11: "Gen Run",
+  12: "RSD Standby",
+}
+18: {
+  0: "Waiting",
+  1: "Checking",
+  2: "Normal",
+  3: "Fault",
+  4: "Permanent Fault",
+  5: "Upgrading",
+  6: "EpsCheckMode",
+  7: "EpsMode"
+}
+19..21: {
+  0: "Waiting",
+  1: "Checking",
+  2: "Normal",
+  3: "Fault",
+  4: "Permanent Fault",
+  5: "Upgrading",
+  6: "EPS Checking",
+  7: "EPS",
+  8: "Self Testing",
+  9: "Idle",
+  10: "Standby",
+  11: "Gen Checking",
+  12: "Gen Run",
+  13: "RSD Standby",
+}
+23, 24: {
+  0: "Waiting",
+  1: "Checking",
+  2: "Normal",
+  3: "Fault",
+  4: "Permanent Fault",
+  5: "Upgrading",
+  6: "EPS Checking/Waiting",
+  7: "EPS",
+  8: "Self Testing",
+  9: "Idle",
+  10: "Standby"
+}
+100, 101: {
+  0: "Init",
+  1: "Idle",
+  2: "Start",
+  3: "Run",
+  4: "Fault",
+  5: "Upgrading"
+}
+102: {} (yes, empty in the app right now)
