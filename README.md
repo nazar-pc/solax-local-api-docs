@@ -6,7 +6,7 @@ Manufacturer didn't want to provide documentation (and it would be mess, I can s
 cloud-free access to real-time data using existing APIs (for instance, to use in Home Assistant) and thus need a way to
 interpret the data anyway.
 
-The route I took was to extract information from official Android application (version 0.4.3), which turns out is built
+The route I took was to extract information from official Android application (version 0.4.5), which turns out is built
 with Apache Cordova and contains all the necessary logic in minified JavaScript.
 
 This approach allows us to not guess what values mean what and to support all inverters that official app supports.
@@ -111,6 +111,7 @@ parse it.
 Serial number can apparently be in either `sn` or `SN` fields of the response.
 
 Serial numbers starting with "SC" and "SQ" appear to be related to EV chargers.
+Serial numbers starting with "SD" appear to be related to Adapter Box.
 
 `DataEvCharger.txt` contains mapping to decode real-time data from such EV chargers.
 

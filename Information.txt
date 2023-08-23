@@ -41,7 +41,7 @@ Information depends on inverterType, which is contained in `Information[1]`:
   if inverterType >= 8
     transportType = 1
   else
-   transportType = transportType
+    transportType = transportType
 10 - dongleModType
 11 - dongleWorkMode
 
