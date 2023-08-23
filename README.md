@@ -40,13 +40,21 @@ Inverter type is both contained in `type` field of the response and, apparently,
 At least this is true for most inverters.
 
 These are the known inverter types based on https://github.com/squishykid/solax, please add yours in PR:
+* `3`
+  * Solax Power X1-Hybrid G1, G2, G3
+* `5`
+  * Solax Power X3-Hybrid G1, G2, G3
+  * PEIMAR NOCTIS PSI-X3
 * `8`
   * Solax Power X1-Smart
 * `14`
   * Solax Power X3-Hybrid G4
   * Qcells Q.VOLT HYB-G3-3P
+  * PEIMAR NOCTIS PSI-X3S
 * `15`
   * Solax Power X1-Hybrid G4
+  * Qcells Q.VOLT HYB-G3-1P
+  * PEIMAR NOCTIS PSI-X1
 
 Here is how they are named in the application's source code:
 
