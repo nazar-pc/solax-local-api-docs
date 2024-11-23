@@ -12,14 +12,14 @@ function read16BitSigned(n) {
 }
 
 function read32BitUnsigned(a, b) {
-  return b + 65536 * a;
+  return a + 65536 * b;
 }
 
 function read32BitSigned(a, b) {
-  if (a < 32768) {
-    return b + 65536 * a;
+  if (b < 32768) {
+    return a + 65536 * b;
   } else {
-    return b + 65536 * a - 4294967296;
+    return a + 65536 * b - 4294967296;
   }
 }
 
