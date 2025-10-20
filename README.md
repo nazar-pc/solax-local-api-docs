@@ -20,7 +20,7 @@ curl -d "?optType=ReadRealTimeData&pwd=PASSWORD" -X POST http://IP_ADDRESS
 ```
 
 * `PASSWORD` is the password used for local access to the data in the app, it defaults to the serial number of the Pocket
-Wi-Fi (I don't have Pocket Lan, but it likely works the same way).
+Wi-Fi (most Pocket Lan dongles do not expose local API at all).
 * `IP_ADDRESS` is the IP address of the inverter given by your router, something like `192.168.1.105`
 
 Typical response from API looks something like this (X1-Hybrid G4):
