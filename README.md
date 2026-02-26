@@ -1,3 +1,6 @@
+> [!WARNING]
+> I no longer use Solax inverter and do not plan to update this repo. Feel free to fork it or if you have plans to maintain it going forward then maybe let me know and we can try to figure something out. It is kind of awkward to do without manufacturer's blessing though, despite how responsive they are otherwise.
+
 # Solax local API docs
 
 Reverse-engineered documentation for local API on inverters built by Solax Power.
